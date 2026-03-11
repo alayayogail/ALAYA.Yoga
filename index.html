@@ -156,6 +156,23 @@
         .high-contrast * { background-color: transparent !important; color: inherit !important; border-color: #fff !important; }
         .large-text { font-size: 1.25rem !important; }
         .underline-links a { text-decoration: underline !important; font-weight: bold !important; }
+
+        .social-link {
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            color: #d6d3d1;
+        }
+        .social-link:hover {
+            background: var(--brand-primary);
+            transform: translateY(-3px);
+            color: white !important;
+        }
     </style>
 </head>
 <body class="antialiased text-right organic-bg">
@@ -320,10 +337,31 @@
         <div class="max-w-7xl mx-auto text-center">
             <div class="flex flex-col items-center mb-8">
                 <span class="font-serif-logo text-3xl text-white tracking-[0.2em]">ALAYA</span>
-                <span class="text-xs font-bold text-purple-400 tracking-[0.4em] mt-1">אֲלָאיָה יוגה</span>
+                <span class="text-xs font-bold text-purple-400 tracking-[0.4em] mt-1 uppercase">Yoga Studio</span>
             </div>
-            <p class="font-light mb-4">מלכי ישראל 10, רמת אליהו, ראשל"צ | 054-6604580</p>
-            <button onclick="openAccessibilityModal()" class="text-xs text-stone-600 hover:text-stone-400 underline transition-colors">הצהרת נגישות</button>
+            
+            <!-- Social Media Links -->
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="https://www.facebook.com/profile.php?id=61586963003174" target="_blank" class="social-link" title="פייסבוק" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/alaya.yoga.il/?hl=en" target="_blank" class="social-link" title="אינסטגרם" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.tiktok.com/@alaya_yoga_il?lang=he-IL" target="_blank" class="social-link" title="טיקטוק" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                </a>
+            </div>
+
+            <div class="space-y-2 mb-8">
+                <p class="font-medium text-stone-300">מלכי ישראל 10, רמת אליהו, ראשון לציון</p>
+                <p class="text-stone-400">054-6604580 | alaya.yoga.il@gmail.com</p>
+            </div>
+            
+            <div class="pt-8 border-t border-stone-900 flex flex-col md:flex-row justify-center items-center gap-4 text-xs">
+                <p>© 2024 Alaya Yoga Studio. כל הזכויות שמורות.</p>
+                <button onclick="openAccessibilityModal()" class="text-stone-600 hover:text-purple-400 underline transition-colors">הצהרת נגישות</button>
+            </div>
         </div>
     </footer>
 
