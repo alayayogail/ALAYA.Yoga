@@ -219,7 +219,11 @@
                     </div>
                     <div class="text-center">
                         <div class="w-44 h-44 mx-auto rounded-full mb-6 bg-purple-50 flex items-center justify-center border-4 border-purple-50 shadow-md overflow-hidden">
+<<<<<<< Updated upstream
                             <img src="https://images.unsplash.com/photo-1552196564-972d46380271?auto=format&fit=crop&q=80&w=400" alt="משה" class="w-full h-full object-cover">
+=======
+                            <img src="https://lh3.googleusercontent.com/u/0/d/1mZKAhU7GrYUZO6JvzLVLwxbU07ZWyugG" alt="משה" class="w-full h-full object-cover">
+>>>>>>> Stashed changes
                         </div>
                         <h3 class="text-xl font-bold mb-1">משה שאול</h3>
                         <p class="text-purple-700 mb-4 italic text-sm">זרימה וכוח</p>
@@ -276,7 +280,8 @@
     <footer class="bg-stone-950 text-stone-500 py-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
             <h4 class="text-white text-xl font-bold mb-6">אֲלָאיָה יוגה</h4>
-            <p class="font-light">מלכי ישראל 10, רמת אליהו, ראשל"צ | 054-6604580</p>
+            <p class="font-light mb-4">מלכי ישראל 10, רמת אליהו, ראשל"צ | 054-6604580</p>
+            <button onclick="openAccessibilityModal()" class="text-xs text-stone-600 hover:text-stone-400 underline transition-colors">הצהרת נגישות</button>
         </div>
     </footer>
 
@@ -295,6 +300,19 @@
         </form>
     </div></div>
 
+    <!-- Accessibility Modal -->
+    <div id="accessibility-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button onclick="closeAccessibilityModal()" class="absolute top-8 left-8 text-stone-400 hover:text-stone-800"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            <h2 class="text-2xl font-bold text-stone-800 mb-6 border-b pb-2">הצהרת נגישות</h2>
+            <div class="text-stone-600 space-y-4 text-right">
+                <p class="leading-relaxed font-medium">בסטודיו אלאיה יוגה אנו רואים חשיבות רבה בהנגשת האתר והסטודיו לכלל האוכלוסייה, לרבות אנשים עם מוגבלויות. אתר זה הונגש בהתאם להוראות הנגישות המופיעות ב- (W3C (Web Content Accessibility Guidelines 2.0 ברמה AA.</p>
+                <p class="leading-relaxed">אמצעי הנגישות באתר כוללים: תפריט נגישות צף המאפשר שינוי ניגודיות וגודל טקסט, תמיכה בניווט מקלדת, ותגיות חלופיות לתמונות. אם נתקלתם בקושי בגלישה או אם יש לכם הצעה לשיפור, נשמח לעמוד לרשותכם בטלפון 054-6604580.</p>
+            </div>
+            <button onclick="closeAccessibilityModal()" class="mt-8 w-full bg-stone-100 text-stone-700 font-bold py-3 rounded-xl hover:bg-stone-200 transition">סגירה</button>
+        </div>
+    </div>
+
     <script>
         const CONFIG = { apiKey: 'AIzaSyC2XZZep2Yw9Xeh4oYPEdr96-uv-g44jtw', calendarId: 'alaya.yoga.il@gmail.com', whatsappNumber: '972546604580' };
         const dayNames = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
@@ -302,6 +320,12 @@
         function openModal() { document.getElementById('lead-modal').style.display = 'flex'; }
         function closeModal() { document.getElementById('lead-modal').style.display = 'none'; }
 
+<<<<<<< Updated upstream
+=======
+        function openAccessibilityModal() { document.getElementById('accessibility-modal').style.display = 'flex'; }
+        function closeAccessibilityModal() { document.getElementById('accessibility-modal').style.display = 'none'; }
+
+>>>>>>> Stashed changes
         // Accessibility Functions
         function toggleAccessibilityMenu() {
             document.getElementById('acc-menu').classList.toggle('active');
@@ -390,7 +414,10 @@
 
         window.addEventListener('DOMContentLoaded', fetchCalendar);
         
+<<<<<<< Updated upstream
         // Close accessibility menu when clicking outside
+=======
+>>>>>>> Stashed changes
         window.addEventListener('click', function(e) {
             if (!document.getElementById('acc-menu').contains(e.target) && !e.target.closest('.accessibility-btn')) {
                 document.getElementById('acc-menu').classList.remove('active');
@@ -398,4 +425,8 @@
         });
     </script>
 </body>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+>>>>>>> Stashed changes
