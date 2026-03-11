@@ -10,7 +10,7 @@
     <meta name="keywords" content="יוגה בראשון לציון, שיעור יוגה, כרטיסיית היכרות יוגה, יוגה רמת אליהו, אלאיה יוגה">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Heebo:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-deep: #4c1d95;
@@ -27,6 +27,17 @@
             background-color: var(--stone-50);
             color: var(--stone-900);
             transition: filter 0.3s ease;
+        }
+
+        .font-serif-logo {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Heebo font for the studio title */
+        .font-heading-accent {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 800;
         }
 
         .organic-bg {
@@ -49,13 +60,20 @@
         header.scrolled { padding: 0.5rem 0; background: rgba(255,255,255,0.95); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
 
         .logo-container {
-            width: 52px; height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-img {
+            width: 56px; height: 56px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--brand-soft);
+            border: 1px solid var(--brand-soft);
             background: white;
-            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease;
         }
+        .logo-img:hover { transform: scale(1.05); }
 
         .hero-gradient {
             background: radial-gradient(circle at top right, #f5f3ff 0%, #fafaf9 60%);
@@ -154,13 +172,19 @@
         <button onclick="resetAccess()" class="w-full text-right py-2 px-3 text-red-600 hover:bg-red-50 rounded mt-2 text-xs font-bold">איפוס הגדרות</button>
     </div>
 
-    <!-- Updated Promo Bar -->
+    <!-- Promo Bar -->
     <div class="promo-bar">✨ מבצע הצטרפות: כרטיסיית היכרות 3 שיעורים ב-100 ש"ח בלבד!</div>
 
     <header id="main-header" class="fixed left-0 right-0 bg-white/60 backdrop-blur-md z-50 border-b border-stone-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="logo-container">
-                <img src="https://lh3.googleusercontent.com/u/0/d/14YYqt52hv7a0jmL7hKNw7tXm_koNjbE6" alt="אלאיה יוגה" class="w-full h-full object-cover">
+                <div class="logo-img">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/14YYqt52hv7a0jmL7hKNw7tXm_koNjbE6" alt="אלאיה יוגה" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif-logo text-2xl tracking-widest text-stone-900">ALAYA</span>
+                    <span class="text-[12px] font-bold text-purple-700 tracking-[0.25em] -mt-0.5">אֲלָאיָה</span>
+                </div>
             </div>
             <nav class="hidden lg:flex space-x-reverse space-x-10 font-medium text-stone-600">
                 <a href="#schedule" class="hover:text-purple-700 transition-colors">מערכת שעות</a>
@@ -176,11 +200,17 @@
         <section class="hero-gradient pt-48 pb-24 px-6 relative overflow-hidden">
             <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
                 <div class="w-full lg:w-3/5 text-center lg:text-right">
-                    <h1 class="text-6xl md:text-8xl font-light text-stone-900 mb-8 leading-[1.1]">אלאיה<br><span class="font-bold text-purple-700">סטודיו ליוגה</span></h1>
+                    <div class="inline-block mb-4">
+                        <span class="font-serif-logo text-2xl text-stone-400 tracking-[0.3em]">ALAYA</span>
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-light text-stone-900 mb-8 leading-[1.1]">
+                        אֲלָאיָה<br>
+                        <span class="text-purple-700 font-heading-accent">סטודיו ליוגה</span>
+                    </h1>
                     
                     <div class="mb-8 p-6 bg-purple-50/50 rounded-3xl border-r-4 border-purple-700 max-w-2xl">
                         <p class="text-lg md:text-xl text-purple-900 font-semibold leading-relaxed">
-                            יוגה היא בשביל כולם, בדיוק כפי שהם. לא צריך להיות חזקים או גמישים כדי לתרגל; כל מה שצריך זה רק לפרוש מזרן.
+                            יוגה היא בשביל כולם, בדיוק כפי שהם. לא צריך להיות חזקים או גמישים כדי לתרגל; כל מה שצריך זה רק לפרוס מזרן.
                         </p>
                     </div>
 
@@ -203,7 +233,6 @@
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-20">
                     <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6">מערכת שעות</h2>
-                    <p class="text-xl text-stone-500 max-w-3xl mx-auto italic">כל השיעורים הם בני 90 דקות (שעה וחצי) של צלילה פנימה.</p>
                 </div>
                 <div id="schedule-grid" class="schedule-grid">
                     <!-- Dynamic Content -->
@@ -250,7 +279,6 @@
         <section id="pricing" class="py-32 bg-stone-50 px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Unit 1: Welcome/Trial & Intro Card -->
                     <div class="price-card featured">
                         <div class="absolute -top-4 right-1/2 translate-x-1/2 bg-purple-700 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg">בואו נכיר</div>
                         <h3 class="text-2xl font-bold mb-6">צעד ראשון בסטודיו</h3>
@@ -268,20 +296,18 @@
                         <button onclick="openModal()" class="w-full py-4 rounded-xl bg-purple-700 text-white font-bold hover:bg-purple-800 transition shadow-xl mt-auto">לפרטים והצטרפות</button>
                     </div>
 
-                    <!-- Unit 2: 2 Classes per week -->
                     <div class="price-card">
                         <span class="text-stone-400 font-bold mb-4 block">מנוי שבועי</span>
                         <h3 class="text-2xl font-bold mb-4">2 תרגולים בשבוע</h3>
-                        <div class="text-5xl font-bold mb-6 text-stone-900">₪350</div>
+                        <div class="text-5xl font-bold mb-6 text-stone-900">₪400</div>
                         <p class="text-stone-600 mb-10 leading-relaxed">איזון מושלם לשמירה על רצף תרגול קבוע ומעמיק לאורך זמן.</p>
                         <button onclick="openModal()" class="w-full py-4 rounded-xl border-2 border-stone-200 text-stone-900 font-bold hover:bg-stone-50 transition mt-auto">לפרטים והצטרפות</button>
                     </div>
 
-                    <!-- Unit 3: Unlimited -->
                     <div class="price-card">
                         <span class="text-stone-400 font-bold mb-4 block">הבחירה המומלצת</span>
                         <h3 class="text-2xl font-bold mb-4">חופשי חודשי</h3>
-                        <div class="text-5xl font-bold mb-6 text-stone-900">₪450</div>
+                        <div class="text-5xl font-bold mb-6 text-stone-900">₪470</div>
                         <p class="text-stone-600 mb-10 leading-relaxed">כניסה חופשית לכל המערכת. הדרך הטובה ביותר לבנות תרגול שבועי מעמיק.</p>
                         <button onclick="openModal()" class="w-full py-4 rounded-xl border-2 border-stone-200 text-stone-900 font-bold hover:bg-stone-50 transition mt-auto">לפרטים והצטרפות</button>
                     </div>
@@ -292,7 +318,10 @@
 
     <footer class="bg-stone-950 text-stone-500 py-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <h4 class="text-white text-xl font-bold mb-6">אֲלָאיָה יוגה</h4>
+            <div class="flex flex-col items-center mb-8">
+                <span class="font-serif-logo text-3xl text-white tracking-[0.2em]">ALAYA</span>
+                <span class="text-xs font-bold text-purple-400 tracking-[0.4em] mt-1">אֲלָאיָה יוגה</span>
+            </div>
             <p class="font-light mb-4">מלכי ישראל 10, רמת אליהו, ראשל"צ | 054-6604580</p>
             <button onclick="openAccessibilityModal()" class="text-xs text-stone-600 hover:text-stone-400 underline transition-colors">הצהרת נגישות</button>
         </div>
