@@ -7,6 +7,7 @@
     <!-- SEO & Organic Marketing Meta Tags -->
     <title>אֲלָאיָה | יוגה בראשון לציון - תרגול מעמיק</title>
     <meta name="description" content="סטודיו אלאיה בראשון לציון. שיעורי יוגה מעמיקים בשיטת אשטנגה, ויניאסה ואיינגאר. כרטיסיית היכרות: 3 שיעורים ב-100 ש"ח.">
+    <meta name="keywords" content="יוגה בראשון לציון, שיעור יוגה, איינגאר יוגה, דניאל גלבוע, אשטנגה, יוגה רמת אליהו">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Heebo:wght@700;800&display=swap" rel="stylesheet">
@@ -26,6 +27,7 @@
             scroll-behavior: smooth; 
             background-color: var(--stone-50);
             color: var(--stone-900);
+            transition: filter 0.3s ease;
         }
 
         .font-serif-logo {
@@ -57,61 +59,23 @@
         header { top: 44px; transition: all 0.3s ease; }
         header.scrolled { padding: 0.5rem 0; background: rgba(255,255,255,0.95); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
         .logo-img {
             width: 56px; height: 56px;
             border-radius: 50%;
             overflow: hidden;
             border: 1px solid var(--brand-soft);
             background: white;
+            transition: transform 0.3s ease;
         }
 
-        /* Photo Stack Effect - Interactive */
-        .photo-stack {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-            height: 520px;
-            margin: 0 auto;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .photo-card {
-            position: absolute;
-            width: 90%;
-            height: 90%;
-            border-radius: 2rem;
-            overflow: hidden;
-            border: 8px solid white;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            top: 5%;
-            left: 5%;
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-        }
-
-        /* Positions defined by specific stack classes */
-        .pos-4 { transform: rotate(7deg) translateX(25px) translateY(10px); z-index: 40; }
-        .pos-3 { transform: rotate(3deg) translateX(10px); z-index: 30; }
-        .pos-2 { transform: rotate(-3deg) translateY(5px); z-index: 20; }
-        .pos-1 { transform: rotate(-8deg) translateX(-20px); z-index: 10; }
-
-        /* Expansion on Hover (applied to whatever card is in that position) */
-        .photo-stack:hover .pos-1 { transform: rotate(-15deg) translateX(-100px) translateY(-30px); }
-        .photo-stack:hover .pos-2 { transform: rotate(-5deg) translateX(-40px) translateY(-50px); }
-        .photo-stack:hover .pos-3 { transform: rotate(5deg) translateX(40px) translateY(-50px); }
-        .photo-stack:hover .pos-4 { transform: rotate(15deg) translateX(100px) translateY(-30px); }
-
-        /* Highlight the card that was just clicked/is on top */
-        .photo-card.active-top {
-            box-shadow: 0 30px 45px -10px rgba(109, 40, 217, 0.4);
-            border-color: #f5f3ff;
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #f5f3ff 0%, #fafaf9 60%);
         }
 
         .schedule-grid {
@@ -128,6 +92,7 @@
             border: 1px solid #e7e5e4;
             display: flex; flex-direction: column;
             min-height: 250px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
         }
         .schedule-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(109, 40, 217, 0.08); }
@@ -166,6 +131,26 @@
             max-height: 90vh; overflow-y: auto;
         }
 
+        .accessibility-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #1e293b; color: white;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1001;
+            cursor: pointer;
+        }
+        
+        .accessibility-menu {
+            display: none; position: fixed; bottom: 90px; right: 30px;
+            background: white; width: 250px; border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 1001;
+            padding: 1rem; border: 1px solid #e2e8f0;
+        }
+        .accessibility-menu.active { display: block; }
+
+        .high-contrast { filter: contrast(1.5) grayscale(0.5); background-color: #000 !important; color: #fff !important; }
+        .large-text { font-size: 1.25rem !important; }
+
         .social-link {
             transition: all 0.3s ease;
             display: flex;
@@ -185,11 +170,21 @@
 </head>
 <body class="antialiased text-right organic-bg">
 
+    <div class="accessibility-btn" onclick="toggleAccessibilityMenu()" title="תפריט נגישות">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/><path d="M9 12h6"/></svg>
+    </div>
+    <div id="acc-menu" class="accessibility-menu">
+        <h4 class="font-bold border-b pb-2 mb-3 text-stone-800">הגדרות נגישות</h4>
+        <button onclick="toggleAccess('high-contrast')" class="w-full text-right py-2 px-3 hover:bg-stone-100 rounded mb-1 text-sm">ניגודיות גבוהה</button>
+        <button onclick="toggleAccess('large-text')" class="w-full text-right py-2 px-3 hover:bg-stone-100 rounded mb-1 text-sm">הגדלת טקסט</button>
+        <button onclick="resetAccess()" class="w-full text-right py-2 px-3 text-red-600 hover:bg-red-50 rounded mt-2 text-xs font-bold">איפוס הגדרות</button>
+    </div>
+
     <div class="promo-bar">✨ מבצע הצטרפות: כרטיסיית היכרות 3 שיעורים ב-100 ש"ח בלבד!</div>
 
     <header id="main-header" class="fixed left-0 right-0 bg-white/60 backdrop-blur-md z-50 border-b border-stone-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-4">
+            <div class="logo-container">
                 <div class="logo-img">
                     <img src="https://lh3.googleusercontent.com/u/0/d/14YYqt52hv7a0jmL7hKNw7tXm_koNjbE6" alt="אלאיה יוגה" class="w-full h-full object-cover">
                 </div>
@@ -199,54 +194,44 @@
                 </div>
             </div>
             <nav class="hidden lg:flex space-x-reverse space-x-10 font-medium text-stone-600">
-                <a href="#philosophy" class="hover:text-purple-700">הדרך שלנו</a>
-                <a href="#schedule" class="hover:text-purple-700">מערכת שעות</a>
-                <a href="#pricing" class="hover:text-purple-700">מחירון</a>
-                <a href="#about" class="hover:text-purple-700">המורים</a>
+                <a href="#philosophy" class="hover:text-purple-700 transition-colors">הדרך שלנו</a>
+                <a href="#schedule" class="hover:text-purple-700 transition-colors">מערכת שעות</a>
+                <a href="#pricing" class="hover:text-purple-700 transition-colors">מחירון</a>
+                <a href="#about" class="hover:text-purple-700 transition-colors">המורים</a>
             </nav>
-            <button onclick="openModal()" class="bg-purple-700 text-white px-7 py-3 rounded-full text-sm font-bold hover:bg-purple-800 transition-all">לפרטים והצטרפות</button>
+            <button onclick="openModal()" class="bg-purple-700 text-white px-7 py-3 rounded-full text-sm font-bold hover:bg-purple-800 shadow-lg transition-all active:scale-95">לפרטים והצטרפות</button>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="pt-48 pb-24 px-6 relative overflow-hidden bg-radial-gradient from-purple-50 to-stone-50">
+        <section class="hero-gradient pt-48 pb-24 px-6 relative overflow-hidden">
             <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
-                <div class="w-full lg:w-1/2 text-center lg:text-right">
+                <div class="w-full lg:w-3/5 text-center lg:text-right">
+                    <div class="inline-block mb-4">
+                        <span class="font-serif-logo text-2xl text-stone-400 tracking-[0.3em]">ALAYA</span>
+                    </div>
                     <h1 class="text-6xl md:text-8xl font-light text-stone-900 mb-8 leading-[1.1]">
                         אֲלָאיָה<br>
                         <span class="text-purple-700 font-heading-accent">סטודיו ליוגה</span>
                     </h1>
                     
-                    <div class="mb-8 p-6 bg-purple-50/50 rounded-3xl border-r-4 border-purple-700">
-                        <p class="text-lg md:text-xl text-purple-900 font-semibold">
+                    <div class="mb-8 p-6 bg-purple-50/50 rounded-3xl border-r-4 border-purple-700 max-w-2xl">
+                        <p class="text-lg md:text-xl text-purple-900 font-semibold leading-relaxed">
                             יוגה היא בשביל כולם, בדיוק כפי שהם. לא צריך להיות חזקים או גמישים כדי לתרגל; כל מה שצריך זה רק לפרוס מזרן.
                         </p>
                     </div>
 
-                    <p class="text-xl text-stone-800 mb-12 leading-relaxed font-medium">
+                    <p class="text-xl md:text-2xl text-stone-800 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
                         סטודיו בוטיק ליוגה בלב <strong>ראשון לציון</strong>. חוויית תרגול <strong>אינטימית</strong> המבוססת על <strong>יחס אישי</strong>, חיבור ל<strong>נשימה</strong> ו<strong>תנועה מודעת</strong>.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <button onclick="openModal()" class="w-full sm:w-auto bg-purple-700 text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-purple-800 transition-all shadow-2xl">שיעור ניסיון חינם</button>
+                        <button onclick="openModal()" class="w-full sm:w-auto bg-purple-700 text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-purple-800 transition-all shadow-2xl">לפרטים והצטרפות</button>
+                        <a href="#pricing" class="w-full sm:w-auto bg-white text-stone-900 px-10 py-6 rounded-full text-lg font-bold border border-stone-200 hover:bg-stone-50 transition-all text-center">מבצע 3 שיעורים ב-100 ש"ח</a>
                     </div>
                 </div>
-                <div class="w-full lg:w-1/2">
-                    <!-- Photo Stack - Dynamic Reordering -->
-                    <div class="photo-stack" id="hero-photo-stack">
-                        <div class="photo-card pos-1" onclick="bringToFront(this)">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1x9wtXT4nOQd-_-QtPn52X8muxCyIpS7D" alt="תרגול יוגה">
-                        </div>
-                        <div class="photo-card pos-2" onclick="bringToFront(this)">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1GzEe72MuuICrhfpv6BZBD3OUEJJdPdLP" alt="מתיחה">
-                        </div>
-                        <div class="photo-card pos-3" onclick="bringToFront(this)">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1coayaG9lmbdRTscn6iVUgWAtBYFJJxdd" alt="סטודיו אלאיה">
-                        </div>
-                        <div class="photo-card pos-4" onclick="bringToFront(this)">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1Zg_t5b2m-2Ny4tp9cxF9xoClzZBoR4k1" alt="שיעור בסטודיו">
-                        </div>
-                    </div>
+                <div class="w-full lg:w-2/5">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="תרגול יוגה" class="rounded-[3rem] shadow-2xl w-full object-cover aspect-[4/5] border-[12px] border-white">
                 </div>
             </div>
         </section>
@@ -255,27 +240,49 @@
         <section id="philosophy" class="py-24 bg-white px-6">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-stone-900 mb-4">הדרך שלנו</h2>
+                    <h2 class="text-4xl font-bold text-stone-900 mb-4">הדרך שלנו: בין חופש לדיוק</h2>
                     <div class="w-20 h-1 bg-purple-700 mx-auto rounded-full"></div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="bg-purple-50/20 p-10 rounded-[2.5rem] border border-purple-100 shadow-sm">
-                        <h3 class="text-2xl font-bold mb-4">החופש לחקור</h3>
-                        <p class="text-stone-800 leading-[1.8] font-medium text-lg">
-                            בהשראת לימודי עם <strong>דניאל גלבוע</strong>, אנו מאמינים בחופש שאינו מתפשר. מסע של מחקר ייחודי שבו המורה מעניק מסגרת תומכת לגילוי העצמי שלכם.
+                
+                <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                    <!-- החופש לחקור -->
+                    <div class="bg-purple-50/20 p-10 rounded-[2.5rem] border border-purple-100/50 flex flex-col shadow-sm">
+                        <div class="text-purple-700 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-stone-900">החופש לחקור</h3>
+                        <p class="text-stone-800 leading-[1.8] mb-4 font-medium text-lg">
+                            בהשראת לימודי עם <strong>דניאל גלבוע</strong>, אנו מאמינים בחופש שאינו מתפשר. דניאל רואה במסע של כל תלמיד מחקר ייחודי, שבו המורה נוכח כדי להעניק מסגרת ותמיכה בתהליך הגילוי העצמי.
+                        </p>
+                        <p class="text-purple-900/80 leading-relaxed italic mt-auto font-medium">
+                            זהו חופש להעז, לחקור את גבולות הגוף והתודעה ולהקשיב לקול הפנימי.
                         </p>
                     </div>
-                    <div class="bg-stone-50 p-10 rounded-[2.5rem] border border-stone-100 shadow-sm">
-                        <h3 class="text-2xl font-bold mb-4">החופש שבדיוק</h3>
-                        <p class="text-stone-800 leading-[1.8] font-medium text-lg">
-                            דרך הראייה של <strong>שיטת איינגאר</strong>, אנו מוצאים שקט פנימי דרך דיוק פיזי. החופש האמיתי נבנה דרך תרגול עקבי ומודע המאפשר יציבות.
+
+                    <!-- החופש שבדיוק -->
+                    <div class="bg-stone-50/50 p-10 rounded-[2.5rem] border border-stone-200/50 flex flex-col shadow-sm">
+                        <div class="text-purple-700 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-stone-900">החופש שבדיוק</h3>
+                        <p class="text-stone-800 leading-[1.8] mb-4 font-medium text-lg">
+                            מנגד, אנו מעמיקים בראייה של <strong>שיטת איינגאר עם הפרשנות של יובל פינגרמן</strong>. כאן, חופש אינו "לעשות מה שרוצים", אלא גילוי של מרחב פנימי פתוח, יציב ושקט. 
+                        </p>
+                        <p class="text-purple-900/80 leading-relaxed italic mt-auto font-medium">
+                            החופש האמיתי נבנה צעד-אחר-צעד דרך תרגול עקבי ומודע, המאפשר שינוי עמוק ויציבות פנימית.
                         </p>
                     </div>
+                </div>
+
+                <div class="mt-16 text-center max-w-3xl mx-auto">
+                    <p class="text-xl text-stone-900 font-bold leading-relaxed bg-stone-50 p-6 rounded-3xl border border-stone-100">
+                        על פניו שתי תפיסות מנוגדות, אך בכל ניגוד קיים חיבור עמוק. בסטודיו אלאיה, כל אחד ואחת מוזמנים לחוות את החופש האישי שלהם בדרך המתאימה להם ביותר.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Schedule Section -->
+        <!-- Dynamic Schedule Section -->
         <section id="schedule" class="py-32 bg-stone-50 px-6 border-y border-stone-100">
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-20">
@@ -288,18 +295,37 @@
         <!-- Teachers Section -->
         <section id="about" class="py-20 bg-white px-6">
             <div class="max-w-5xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="text-center md:text-right flex flex-col items-center md:items-start p-8 rounded-[3rem] bg-stone-50/30">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-light text-stone-800 border-b-2 border-purple-100 inline-block pb-2">המורים</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+                    <!-- Lilach -->
+                    <div class="text-center md:text-right flex flex-col items-center md:items-start p-8 rounded-[3rem] bg-stone-50/30 border border-stone-100">
                         <img src="https://lh3.googleusercontent.com/u/0/d/19hx_E_eTr02VGuAoZqW1zYooVC5cnXS_" alt="לילך" class="w-48 h-48 rounded-full mb-8 object-cover border-4 border-white shadow-xl">
-                        <h3 class="text-2xl font-bold text-stone-900">לילך לנדס</h3>
-                        <p class="text-purple-700 italic font-semibold mb-4">אשטנגה ויניאסה</p>
-                        <p class="text-stone-700 font-medium">לילך מביאה שילוב של עוצמה ורכות. מורה מנוסה היודעת לדייק את התנועה ברגישות רבה.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-stone-900">לילך לנדס</h3>
+                        <p class="text-purple-700 mb-4 italic text-base font-semibold">אשטנגה ויניאסה</p>
+                        <div class="text-stone-800 text-base leading-[1.8] space-y-4 font-medium">
+                            <p>
+                                לילך מביאה אל המזרן שילוב נדיר של עוצמת האשטנגה ויניאסה יחד עם רכות וקשיבות עמוקה לכל מתרגל ומתרגלת. כמורה מנוסה, היא יודעת לדייק את התנועה עבורכם ברגישות רבה, ויוצרת מרחב בטוח ומעצים שבו כל אחד יכול להתקדם בקצב שלו, מתוך דיוק פנימי ושלווה.
+                            </p>
+                            <p class="text-stone-500 text-sm italic font-normal">
+                                לילך למדה אשטנגה יוגה מאייל צ'חנובסקי, בוגרת קורס מדיטציה ומורה בכירה ליוגה בשיטת אננדה מרגה.
+                            </p>
+                        </div>
                     </div>
-                    <div class="text-center md:text-right flex flex-col items-center md:items-start p-8 rounded-[3rem] bg-stone-50/30">
-                        <img src="https://lh3.googleusercontent.com/u/0/d/11N2Dwmc80OnxDCdqnNUs-GV8od9CKMxn" alt="משה" class="w-48 h-48 rounded-full mb-8 object-cover border-4 border-white shadow-xl">
-                        <h3 class="text-2xl font-bold text-stone-900">משה שאול</h3>
-                        <p class="text-purple-700 italic font-semibold mb-4">פאוור יוגה</p>
-                        <p class="text-stone-700 font-medium">משה מאזן בין תנועה עוצמתית לדיוק מבני. דגש על סידור הגוף, נשימה ומדיטציה.</p>
+                    <!-- Moshe -->
+                    <div class="text-center md:text-right flex flex-col items-center md:items-start p-8 rounded-[3rem] bg-stone-50/30 border border-stone-100">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1mZKAhU7GrYUZO6JvzLVLwxbU07ZWyugG" alt="משה" class="w-48 h-48 rounded-full mb-8 object-cover border-4 border-white shadow-xl">
+                        <h3 class="text-2xl font-bold mb-2 text-stone-900">משה שאול</h3>
+                        <p class="text-purple-700 mb-4 italic text-base font-semibold">פאוור יוגה</p>
+                        <div class="text-stone-800 text-base leading-[1.8] space-y-4 font-medium">
+                            <p>
+                                משה מציע חוויית תרגול שלמה המאזנת בין תנועה עוצמתית לדיוק מבני. בשיעוריו הוא שם דגש על סידור נכון של הגוף ועל העמקה משמעותית בנשימה ובמדיטציה בתוך רצף פאוור יוגה דינמי. השיעור מיועד למי שמבקש לחזק את הגוף ולשכלל את היכולות הפיזיות מתוך שקט פנימי ומודעות גבוהה.
+                            </p>
+                            <p class="text-stone-500 text-sm italic font-normal">
+                                משה למד ועדיין לומד הוראת יוגה אצל דניאל גלבוע, עם התמחות במדיטציה, פראנאיאמה ובשילוב טיפול בשיאצ'ו. במקביל הוא עובר חניכה אישית אצל יובל פינגרמן, שם הוא מתרגל ומעמיק בשיטת איינגר.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -311,26 +337,61 @@
                 <div class="grid md:grid-cols-3 gap-8 mb-12">
                     <div class="price-card featured">
                         <div class="absolute -top-4 right-1/2 translate-x-1/2 bg-purple-700 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg">בואו נכיר</div>
-                        <h3 class="text-2xl font-bold mb-6 text-center">כרטיסיית היכרות</h3>
-                        <div class="text-center mb-10">
-                            <div class="text-4xl font-bold text-purple-700 mb-1">₪100</div>
-                            <div class="font-bold text-stone-900">3 שיעורים</div>
+                        <h3 class="text-2xl font-bold mb-6 text-center text-stone-900">צעד ראשון בסטודיו</h3>
+                        <div class="space-y-8 mb-10 text-center">
+                            <div>
+                                <div class="text-3xl font-bold text-stone-900 mb-1">שיעור ניסיון חינם</div>
+                                <p class="text-sm text-stone-500 italic">שיעור מלא ללא עלות.</p>
+                            </div>
+                            <div class="border-t border-purple-100 pt-6">
+                                <div class="text-4xl font-bold text-purple-700 mb-1">₪100</div>
+                                <div class="font-bold text-stone-900 mb-1">כרטיסיית היכרות - 3 שיעורים</div>
+                                <p class="text-sm text-stone-500 italic">תקף לחודש ימים.</p>
+                            </div>
                         </div>
-                        <button onclick="openModal()" class="w-full py-4 rounded-xl bg-purple-700 text-white font-bold hover:bg-purple-800 transition shadow-xl mt-auto">לתיאום שיעור</button>
+                        <button onclick="openModal()" class="w-full py-4 rounded-xl bg-purple-700 text-white font-bold hover:bg-purple-800 transition shadow-xl mt-auto">לפרטים והצטרפות</button>
                     </div>
 
                     <div class="price-card">
-                        <h3 class="text-2xl font-bold mb-4">2 תרגולים בשבוע</h3>
+                        <span class="text-stone-400 font-bold mb-4 block">מנוי שבועי</span>
+                        <h3 class="text-2xl font-bold mb-4 text-stone-900">2 תרגולים בשבוע</h3>
                         <div class="text-5xl font-bold mb-6 text-stone-900">₪370</div>
-                        <p class="text-stone-800 mb-10 font-medium">איזון מושלם לשמירה על רצף תרגול קבוע.</p>
-                        <button onclick="openModal()" class="w-full py-4 rounded-xl border-2 border-stone-200 font-bold mt-auto">פרטים נוספים</button>
+                        <p class="text-stone-800 mb-10 leading-relaxed font-medium">איזון מושלם לשמירה על רצף תרגול קבוע ומעמיק לאורך זמן.</p>
+                        <button onclick="openModal()" class="w-full py-4 rounded-xl border-2 border-stone-200 text-stone-900 font-bold hover:bg-stone-50 transition mt-auto">לפרטים והצטרפות</button>
                     </div>
 
                     <div class="price-card">
-                        <h3 class="text-2xl font-bold mb-4">חופשי חודשי</h3>
+                        <span class="text-stone-400 font-bold mb-4 block">הבחירה המומלצת</span>
+                        <h3 class="text-2xl font-bold mb-4 text-stone-900">חופשי חודשי</h3>
                         <div class="text-5xl font-bold mb-6 text-stone-900">₪470</div>
-                        <p class="text-stone-800 mb-10 font-medium">כניסה חופשית לכל המערכת. הדרך הטובה ביותר להעמיק.</p>
-                        <button onclick="openModal()" class="w-full py-4 rounded-xl border-2 border-stone-200 font-bold mt-auto">פרטים נוספים</button>
+                        <p class="text-stone-800 mb-10 leading-relaxed font-medium">כניסה חופשית לכל המערכת. הדרך הטובה ביותר לבנות תרגול שבועי מעמיק.</p>
+                        <button onclick="openModal()" class="w-full py-4 rounded-xl border-2 border-stone-200 text-stone-900 font-bold hover:bg-stone-50 transition mt-auto">לפרטים והצטרפות</button>
+                    </div>
+                </div>
+
+                <!-- Custom Pack Note -->
+                <div class="max-w-3xl mx-auto bg-white/50 border border-stone-200 p-6 rounded-[2rem] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right shadow-sm mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-purple-100 p-3 rounded-full text-purple-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <p class="text-stone-800 font-medium text-lg">
+                            מעדיפים כרטיסייה? דברו איתנו ונבנה לכם <strong>כרטיסייה מותאמת אישית</strong>.
+                        </p>
+                    </div>
+                    <button onclick="openModal()" class="text-purple-700 font-bold border-b-2 border-purple-200 hover:border-purple-700 transition-all pb-0.5">דברו איתנו</button>
+                </div>
+
+                <!-- Dana/Generosity Note -->
+                <div class="max-w-3xl mx-auto bg-purple-50/40 border border-purple-100 p-8 rounded-[2rem] text-center shadow-sm">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="text-purple-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        </div>
+                        <p class="text-stone-800 font-medium text-lg leading-relaxed">
+                            באלאיה אנחנו מאמינים שיוגה שייכת לכולם. אם יש רצון לתרגל אך אין באפשרותך לשלם, נשמח לבדוק יחד אפשרות לתרגול בדָאנַה — לפי היכולת, מתוך נדיבות הדדית ופתיחת הלב.
+                        </p>
+                        <button onclick="openModal()" class="text-purple-700 font-bold border-b-2 border-purple-200 hover:border-purple-700 transition-all pb-0.5 mt-2">פנו אלינו בפרטי</button>
                     </div>
                 </div>
             </div>
@@ -341,16 +402,30 @@
         <div class="max-w-7xl mx-auto text-center">
             <div class="flex flex-col items-center mb-8">
                 <span class="font-serif-logo text-3xl text-white tracking-[0.2em]">ALAYA</span>
+                <span class="text-xs font-bold text-purple-400 tracking-[0.4em] mt-1 uppercase">Yoga Studio</span>
             </div>
-            <div class="space-y-2 mb-8 text-stone-400">
-                <p>מלכי ישראל 10, רמת אליהו, ראשון לציון</p>
-                <p>054-6604580 | alaya.yoga.il@gmail.com</p>
-            </div>
+            
             <div class="flex justify-center gap-6 mb-12">
+                <a href="https://www.facebook.com/profile.php?id=61586963003174" target="_blank" class="social-link" title="פייסבוק">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
                 <a href="https://www.instagram.com/alaya.yoga.il/?hl=en" target="_blank" class="social-link" title="אינסטגרם">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
+                <a href="https://www.tiktok.com/@alaya_yoga_il?lang=he-IL" target="_blank" class="social-link" title="טיקטוק">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                </a>
             </div>
+
+            <div class="space-y-2 mb-8">
+                <p class="font-medium text-stone-300">מלכי ישראל 10, רמת אליהו, ראשון לציון <span class="text-purple-400 mx-2 text-sm">|</span> <span class="text-stone-400 italic text-sm">חניה בשפע</span></p>
+                <p class="text-stone-400">054-6604580 | alaya.yoga.il@gmail.com</p>
+            </div>
+            
+            <div class="mb-8">
+                <a href="/accessibility" class="text-sm text-stone-600 hover:text-purple-400 underline decoration-stone-800 underline-offset-4">הצהרת נגישות</a>
+            </div>
+            
             <p class="text-xs">© 2024 Alaya Yoga Studio. כל הזכויות שמורות.</p>
         </div>
     </footer>
@@ -358,10 +433,14 @@
     <div id="lead-modal" class="modal-overlay">
         <div class="modal-content">
             <button onclick="closeModal()" class="absolute top-8 left-8 text-stone-400 hover:text-stone-800"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-            <h2 class="text-3xl font-bold text-purple-700 mb-2">צרו קשר</h2>
-            <form onsubmit="sendToWhatsapp(event)" class="space-y-6 mt-8">
-                <input type="text" id="first-name" placeholder="שם מלא" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none">
-                <input type="tel" id="phone" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 text-right outline-none" placeholder="טלפון">
+            <h2 class="text-4xl font-bold text-purple-700 mb-2">צרו קשר</h2>
+            <p class="text-stone-500 mb-10 italic">השאירו פרטים ונחזור אליכם לתיאום שיעור ניסיון.</p>
+            <form onsubmit="sendToWhatsapp(event)" class="space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="first-name" placeholder="שם פרטי" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none focus:border-purple-500">
+                    <input type="text" id="last-name" placeholder="שם משפחה" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none focus:border-purple-500">
+                </div>
+                <input type="tel" id="phone" required pattern="[0-9]{9,10}" class="w-full px-5 py-4 rounded-2xl border border-stone-200 text-right outline-none focus:border-purple-500" placeholder="טלפון">
                 <button type="submit" class="w-full bg-purple-700 text-white font-bold py-5 rounded-2xl hover:bg-purple-800 transition">שלחו לי פרטים בוואטסאפ</button>
             </form>
         </div>
@@ -373,65 +452,22 @@
 
         function openModal() { document.getElementById('lead-modal').style.display = 'flex'; }
         function closeModal() { document.getElementById('lead-modal').style.display = 'none'; }
-
-        /* Photo Stack Logic: Rotate classes to bring clicked photo to front */
-        function bringToFront(clickedCard) {
-            const stack = document.getElementById('hero-photo-stack');
-            const cards = Array.from(stack.querySelectorAll('.photo-card'));
-            
-            // If the card is already at the front (pos-4), do nothing or could toggle
-            if (clickedCard.classList.contains('pos-4')) return;
-
-            // Define the visual order from back to front
-            const positions = ['pos-1', 'pos-2', 'pos-3', 'pos-4'];
-            
-            // Find current positions of all cards
-            const cardStates = cards.map(card => {
-                return {
-                    el: card,
-                    pos: positions.find(p => card.classList.contains(p))
-                };
-            });
-
-            // Target position is pos-4 (front)
-            // We want to move clickedCard to pos-4, and shift others accordingly
-            const clickedIndex = positions.indexOf(cardStates.find(s => s.el === clickedCard).pos);
-            
-            cardStates.forEach(state => {
-                const currentPosIndex = positions.indexOf(state.pos);
-                let newPosIndex;
-
-                if (state.el === clickedCard) {
-                    newPosIndex = 3; // Always go to front (pos-4)
-                } else if (currentPosIndex > clickedIndex) {
-                    newPosIndex = currentPosIndex - 1; // Shift down
-                } else {
-                    newPosIndex = currentPosIndex; // Stay
-                }
-                
-                // Update Classes
-                state.el.classList.remove(...positions);
-                state.el.classList.add(positions[newPosIndex]);
-                
-                // Active top styling
-                if (newPosIndex === 3) {
-                    state.el.classList.add('active-top');
-                } else {
-                    state.el.classList.remove('active-top');
-                }
-            });
-        }
+        function toggleAccessibilityMenu() { document.getElementById('acc-menu').classList.toggle('active'); }
+        function toggleAccess(className) { document.body.classList.toggle(className); }
+        function resetAccess() { document.body.classList.remove('high-contrast', 'large-text'); }
 
         function sendToWhatsapp(event) {
             event.preventDefault();
             const fn = document.getElementById('first-name').value;
+            const ln = document.getElementById('last-name').value;
             const ph = document.getElementById('phone').value;
-            const msg = `היי! אשמח לקבל פרטים על הסטודיו. שמי: ${fn}, טלפון: ${ph}`;
+            const msg = `היי! אשמח לקבל פרטים נוספים על הסטודיו. שמי: ${fn} ${ln}, טלפון: ${ph}`;
             window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
             closeModal();
         }
 
         async function fetchCalendar() {
+            const grid = document.getElementById('schedule-grid');
             try {
                 const now = new Date(); now.setHours(0,0,0,0);
                 const future = new Date(); future.setDate(now.getDate() + 14);
@@ -440,60 +476,73 @@
                 const data = await response.json();
                 if (data.items) renderEvents(data.items);
             } catch (e) {
-                document.getElementById('schedule-grid').innerHTML = '<p class="col-span-full text-center py-10">טוען מערכת שעות...</p>';
+                grid.innerHTML = `<p class="col-span-full text-center py-10 text-stone-400 italic">לא ניתן לטעון את המערכת...</p>`;
             }
         }
 
         function renderEvents(events) {
             const grid = document.getElementById('schedule-grid');
             grid.innerHTML = '';
-            const grouped = {};
             const dayToTargetDate = {};
+            const grouped = {};
 
             events.forEach(ev => {
-                const start = ev.start?.dateTime || ev.start?.date;
-                if (!start) return;
-                const d = new Date(start);
+                const startTime = ev.start?.dateTime || ev.start?.date;
+                if (!startTime) return;
+                const d = new Date(startTime);
                 const di = d.getDay();
                 if (di === 6) return;
-                const dk = d.toISOString().split('T')[0];
-                if (!dayToTargetDate[di] || dk < dayToTargetDate[di]) dayToTargetDate[di] = dk;
+                const dateKey = d.toISOString().split('T')[0];
+                if (!dayToTargetDate[di] || dateKey < dayToTargetDate[di]) dayToTargetDate[di] = dateKey;
             });
 
             events.forEach(ev => {
-                const start = ev.start?.dateTime || ev.start?.date;
-                if (!start) return;
-                const d = new Date(start);
-                const di = d.getDay();
-                if (di === 6 || d.toISOString().split('T')[0] !== dayToTargetDate[di]) return;
+                const startDateTime = ev.start?.dateTime || ev.start?.date;
+                const endDateTime = ev.end?.dateTime || ev.end?.date;
+                if (!startDateTime) return;
                 
-                const dn = dayNames[di];
-                if (!grouped[dn]) grouped[dn] = [];
-                grouped[dn].push({
-                    time: d.toLocaleTimeString('he-IL', {hour: '2-digit', minute:'2-digit', hour12: false}),
-                    title: ev.summary || 'יוגה',
-                    ts: d.getTime()
-                });
+                const dStart = new Date(startDateTime);
+                const dEnd = endDateTime ? new Date(endDateTime) : null;
+                const di = dStart.getDay();
+                if (di === 6) return;
+                
+                if (dStart.toISOString().split('T')[0] === dayToTargetDate[di]) {
+                    const dn = dayNames[di];
+                    if (!grouped[dn]) grouped[dn] = [];
+                    
+                    const timeString = dStart.toLocaleTimeString('he-IL', {hour: '2-digit', minute:'2-digit', hour12: false});
+                    const endTimeString = dEnd ? dEnd.toLocaleTimeString('he-IL', {hour: '2-digit', minute:'2-digit', hour12: false}) : '';
+                    
+                    grouped[dn].push({
+                        time: endTimeString ? `${timeString} - ${endTimeString}` : timeString,
+                        title: ev.summary || 'יוגה',
+                        ts: dStart.getTime()
+                    });
+                }
             });
 
             dayNames.forEach(dn => {
                 const card = document.createElement('div');
                 card.className = 'schedule-card';
-                let items = grouped[dn] ? grouped[dn].sort((a,b)=>a.ts-b.ts).map(i => `
-                    <div class="class-item">
-                        <p class="text-[11px] font-bold text-purple-600 mb-1" dir="ltr">${i.time}</p>
-                        <p class="font-bold text-stone-800 text-sm">${i.title}</p>
-                    </div>`).join('') : '<p class="text-stone-300 italic text-center py-4">אין שיעורים</p>';
-                card.innerHTML = `<h3 class="day-title">${dn}</h3><div class="space-y-2">${items}</div>`;
+                let itemsHtml = '<div class="flex-1 flex items-center justify-center text-stone-300 italic text-sm">אין שיעורים</div>';
+                if (grouped[dn]) {
+                    grouped[dn].sort((a, b) => a.ts - b.ts);
+                    itemsHtml = `<div class="space-y-4">${grouped[dn].map(i => `
+                        <div class="class-item">
+                            <p class="text-[11px] font-bold text-purple-600 mb-1" dir="ltr">${i.time}</p>
+                            <p class="font-bold text-stone-800 text-sm mb-1">${i.title}</p>
+                        </div>`).join('')}</div>`;
+                }
+                card.innerHTML = `<h3 class="day-title">${dn}</h3>${itemsHtml}`;
                 grid.appendChild(card);
             });
         }
 
         window.addEventListener('DOMContentLoaded', fetchCalendar);
         window.addEventListener('scroll', function() {
-            const h = document.getElementById('main-header');
-            if (window.scrollY > 50) h.classList.add('scrolled');
-            else h.classList.remove('scrolled');
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
     </script>
 </body>
