@@ -480,18 +480,26 @@
             });
 
             events.forEach(ev => {
-                const startTime = ev.start?.dateTime || ev.start?.date;
-                if (!startTime) return;
-                const d = new Date(startTime);
-                const di = d.getDay();
+                const startDateTime = ev.start?.dateTime || ev.start?.date;
+                const endDateTime = ev.end?.dateTime || ev.end?.date;
+                if (!startDateTime) return;
+                
+                const dStart = new Date(startDateTime);
+                const dEnd = endDateTime ? new Date(endDateTime) : null;
+                const di = dStart.getDay();
                 if (di === 6) return;
-                if (d.toISOString().split('T')[0] === dayToTargetDate[di]) {
+                
+                if (dStart.toISOString().split('T')[0] === dayToTargetDate[di]) {
                     const dn = dayNames[di];
                     if (!grouped[dn]) grouped[dn] = [];
+                    
+                    const timeString = dStart.toLocaleTimeString('he-IL', {hour: '2-digit', minute:'2-digit', hour12: false});
+                    const endTimeString = dEnd ? dEnd.toLocaleTimeString('he-IL', {hour: '2-digit', minute:'2-digit', hour12: false}) : '';
+                    
                     grouped[dn].push({
-                        time: d.toLocaleTimeString('he-IL', {hour: '2-digit', minute:'2-digit', hour12: false}),
+                        time: endTimeString ? `${timeString} - ${endTimeString}` : timeString,
                         title: ev.summary || 'יוגה',
-                        ts: d.getTime()
+                        ts: dStart.getTime()
                     });
                 }
             });
@@ -504,7 +512,7 @@
                     grouped[dn].sort((a, b) => a.ts - b.ts);
                     itemsHtml = `<div class="space-y-4">${grouped[dn].map(i => `
                         <div class="class-item">
-                            <p class="text-[11px] font-bold text-purple-600 mb-1">${i.time}</p>
+                            <p class="text-[11px] font-bold text-purple-600 mb-1" dir="ltr">${i.time}</p>
                             <p class="font-bold text-stone-800 text-sm mb-1">${i.title}</p>
                         </div>`).join('')}</div>`;
                 }
