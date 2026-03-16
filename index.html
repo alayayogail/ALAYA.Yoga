@@ -13,9 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Heebo:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-deep: #4c1d95;
-            --brand-primary: #6d28d9;
-            --brand-soft: #f5f3ff;
+            --brand-deep: #7c2d12; /* Deep Terracotta */
+            --brand-primary: #9a3412; /* Balanced Earth Orange */
+            --brand-soft: #fef2f2; /* Soft Clay */
+            --brand-accent: #846d5b; /* Muted Sand/Stone */
             --stone-900: #1c1917;
             --stone-800: #292524;
             --stone-600: #57534e;
@@ -45,7 +46,7 @@
         }
 
         .promo-bar {
-            background: linear-gradient(90deg, #4c1d95, #7c3aed);
+            background: linear-gradient(90deg, #a8a29e, #9a3412); /* Muted Stone to Earth Orange */
             color: white;
             text-align: center;
             padding: 10px;
@@ -75,7 +76,7 @@
         }
 
         .hero-gradient {
-            background: radial-gradient(circle at top right, #f5f3ff 0%, #fafaf9 60%);
+            background: radial-gradient(circle at top right, #f5f5f4 0%, #fafaf9 60%);
         }
 
         /* Improved Hero Card Deck Styling */
@@ -135,7 +136,7 @@
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
         }
-        .schedule-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(109, 40, 217, 0.08); }
+        .schedule-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(154, 52, 18, 0.08); }
 
         .day-title {
             font-weight: 700; color: var(--brand-primary);
@@ -145,7 +146,7 @@
 
         .class-item {
             margin-bottom: 1rem; padding: 1rem; border-radius: 1rem;
-            background: #fdfaff; border-right: 4px solid #c084fc;
+            background: #fbfbfb; border-right: 4px solid #846d5b;
         }
 
         .price-card {
@@ -155,7 +156,7 @@
         }
         .price-card.featured {
             border: 2px solid var(--brand-primary);
-            box-shadow: 0 25px 50px -12px rgba(109, 40, 217, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(154, 52, 18, 0.15);
             position: relative;
         }
 
@@ -173,7 +174,7 @@
 
         .accessibility-btn {
             position: fixed; bottom: 30px; right: 30px;
-            background-color: #1e293b; color: white;
+            background-color: #44403c; color: white;
             width: 50px; height: 50px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1001;
@@ -206,6 +207,14 @@
             transform: translateY(-3px);
             color: white !important;
         }
+
+        /* Override button colors with Earth Balance Tones */
+        .btn-primary-earth {
+            background-color: #9a3412 !important;
+        }
+        .btn-primary-earth:hover {
+            background-color: #7c2d12 !important;
+        }
     </style>
 </head>
 <body class="antialiased text-right organic-bg">
@@ -230,16 +239,16 @@
                 </div>
                 <div class="flex flex-col leading-none">
                     <span class="font-serif-logo text-2xl tracking-widest text-stone-900">ALAYA</span>
-                    <span class="text-[12px] font-bold text-purple-700 tracking-[0.25em] -mt-0.5">אֲלָאיָה</span>
+                    <span class="text-[12px] font-bold text-orange-900 tracking-[0.25em] -mt-0.5">אֲלָאיָה</span>
                 </div>
             </div>
             <nav class="hidden lg:flex space-x-reverse space-x-10 font-medium text-stone-600">
-                <a href="#philosophy" class="hover:text-purple-700 transition-colors">הדרך שלנו</a>
-                <a href="#schedule" class="hover:text-purple-700 transition-colors">מערכת שעות</a>
-                <a href="#pricing" class="hover:text-purple-700 transition-colors">מחירון</a>
-                <a href="#about" class="hover:text-purple-700 transition-colors">המורים</a>
+                <a href="#philosophy" class="hover:text-orange-900 transition-colors">הדרך שלנו</a>
+                <a href="#schedule" class="hover:text-orange-900 transition-colors">מערכת שעות</a>
+                <a href="#pricing" class="hover:text-orange-900 transition-colors">מחירון</a>
+                <a href="#about" class="hover:text-orange-900 transition-colors">המורים</a>
             </nav>
-            <button onclick="openModal()" class="bg-purple-700 text-white px-7 py-3 rounded-full text-sm font-bold hover:bg-purple-800 shadow-lg transition-all active:scale-95">לפרטים והצטרפות</button>
+            <button onclick="openModal()" class="btn-primary-earth text-white px-7 py-3 rounded-full text-sm font-bold shadow-lg transition-all active:scale-95">לפרטים והצטרפות</button>
         </div>
     </header>
 
@@ -253,11 +262,11 @@
                     </div>
                     <h1 class="text-6xl md:text-8xl font-light text-stone-900 mb-8 leading-[1.1]">
                         אֲלָאיָה<br>
-                        <span class="preview-text" style="font-family: 'Assistant', sans-serif; font-weight: 300; letter-spacing: 0.3em; font-size: 54px; color: #6d28d9; display: block; margin-top: 1rem;">סטודיו ליוגה</span>
+                        <span class="preview-text" style="font-family: 'Assistant', sans-serif; font-weight: 300; letter-spacing: 0.3em; font-size: 54px; color: #9a3412; display: block; margin-top: 1rem;">סטודיו ליוגה</span>
                     </h1>
                     
-                    <div class="mb-8 p-6 bg-purple-50/50 rounded-3xl border-r-4 border-purple-700 max-w-2xl">
-                        <p class="text-lg md:text-xl text-purple-900 font-semibold leading-relaxed">
+                    <div class="mb-8 p-6 bg-stone-100/50 rounded-3xl border-r-4 border-stone-400 max-w-2xl">
+                        <p class="text-lg md:text-xl text-stone-900 font-semibold leading-relaxed">
                             יוגה היא בשביל כולם, בדיוק כפי שהם. לא צריך להיות חזקים או גמישים כדי לתרגל; כל מה שצריך זה רק לפרוס מזרן.
                         </p>
                     </div>
@@ -266,7 +275,7 @@
                         סטודיו בוטיק ליוגה בלב <strong>ראשון לציון</strong>. חוויית תרגול <strong>אינטימית</strong> המבוססת על <strong>יחס אישי</strong>, חיבור ל<strong>נשימה</strong> ו<strong>תנועה מודעת</strong>.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <button onclick="openModal()" class="w-full sm:w-auto bg-purple-700 text-white px-12 py-6 rounded-full text-xl font-bold hover:bg-purple-800 transition-all shadow-2xl">לפרטים והצטרפות</button>
+                        <button onclick="openModal()" class="btn-primary-earth w-full sm:w-auto text-white px-12 py-6 rounded-full text-xl font-bold transition-all shadow-2xl">לפרטים והצטרפות</button>
                         <a href="#pricing" class="w-full sm:w-auto bg-white text-stone-900 px-10 py-6 rounded-full text-lg font-bold border border-stone-200 hover:bg-stone-50 transition-all text-center">מבצע 3 שיעורים ב-100 ש"ח</a>
                     </div>
                 </div>
@@ -289,32 +298,32 @@
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-stone-900 mb-4">הדרך שלנו: בין חופש לדיוק</h2>
-                    <div class="w-20 h-1 bg-purple-700 mx-auto rounded-full"></div>
+                    <div class="w-20 h-1 bg-stone-400 mx-auto rounded-full"></div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-12 items-stretch">
-                    <div class="bg-purple-50/20 p-10 rounded-[2.5rem] border border-purple-100/50 flex flex-col shadow-sm">
-                        <div class="text-purple-700 mb-6">
+                    <div class="bg-stone-50 p-10 rounded-[2.5rem] border border-stone-100/50 flex flex-col shadow-sm">
+                        <div class="text-stone-500 mb-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-stone-900">החופש לחקור</h3>
                         <p class="text-stone-800 leading-[1.8] mb-4 font-medium text-lg">
                             בהשראת לימודי עם <strong>דניאל גלבוע</strong>, אנו מאמינים בחופש שאינו מתפשר. דניאל רואה במסע של כל תלמיד מחקר ייחודי, שבו המורה נוכח כדי להעניק מסגרת ותמיכה בתהליך הגילוי העצמי.
                         </p>
-                        <p class="text-purple-900/80 leading-relaxed italic mt-auto font-medium">
+                        <p class="text-orange-900/80 leading-relaxed italic mt-auto font-medium">
                             זהו חופש להעז, לחקור את גבולות הגוף והתודעה ולהקשיב לקול הפנימי.
                         </p>
                     </div>
 
                     <div class="bg-stone-50/50 p-10 rounded-[2.5rem] border border-stone-200/50 flex flex-col shadow-sm">
-                        <div class="text-purple-700 mb-6">
+                        <div class="text-stone-500 mb-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-stone-900">החופש שבדיוק</h3>
                         <p class="text-stone-800 leading-[1.8] mb-4 font-medium text-lg">
                             מנגד, אנו מעמיקים בשיטת איינגאר לפי הפרשנות של יובל פינגרמן. כאן, חופש אינו "לעשות מה שרוצים", אלא גילוי של מרחב פנימי פתוח, יציב ושקט. 
                         </p>
-                        <p class="text-purple-900/80 leading-relaxed italic mt-auto font-medium">
+                        <p class="text-orange-900/80 leading-relaxed italic mt-auto font-medium">
                             החופש האמיתי נבנה צעד-אחר-צעד דרך תרגול עקבי ומודע, המאפשר שינוי עמוק ויציבות פנימית.
                         </p>
                     </div>
@@ -342,13 +351,13 @@
         <section id="about" class="py-20 bg-white px-6">
             <div class="max-w-5_xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl font-light text-stone-800 border-b-2 border-purple-100 inline-block pb-2">המורים</h2>
+                    <h2 class="text-3xl font-light text-stone-800 border-b-2 border-stone-100 inline-block pb-2">המורים</h2>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                     <div class="text-center md:text-right flex flex-col items-center md:items-start p-8 rounded-[3rem] bg-stone-50/30 border border-stone-100">
                         <img src="https://lh3.googleusercontent.com/u/0/d/19hx_E_eTr02VGuAoZqW1zYooVC5cnXS_" alt="לילך" class="w-48 h-48 rounded-full mb-8 object-cover border-4 border-white shadow-xl">
                         <h3 class="text-2xl font-bold mb-2 text-stone-900">לילך לנדס</h3>
-                        <p class="text-purple-700 mb-4 italic text-base font-semibold">אשטנגה ויניאסה</p>
+                        <p class="text-stone-500 mb-4 italic text-base font-semibold">אשטנגה ויניאסה</p>
                         <div class="text-stone-800 text-base leading-[1.8] space-y-4 font-medium">
                             <p>
                                 לילך היא מתרגלת יוגה מסורה משנת 2007 המביאה אל המזרן שילוב נדיר של עוצמה פיזית וקשיבות עמוקה. היא למדה הוראת יוגה במשך שנתיים אצל אייל צ'חנובסקי ומלמדת מאז שנת 2013. בשיעוריה היא יוצרת מרחב בטוח ומעצים שבו כל אחד ואחת יכולים לחקור את גבולות הגוף והתודעה ברגישות רבה. מתוך ניסיונה העשיר, היא מדייקת את התנועה עבור המתרגלים ומאפשרת להם להתקדם בקצב אישי, מתוך שלווה פנימית וחיבור אמיתי לנשימה.
@@ -361,10 +370,10 @@
                     <div class="text-center md:text-right flex flex-col items-center md:items-start p-8 rounded-[3rem] bg-stone-50/30 border border-stone-100">
                         <img src="https://lh3.googleusercontent.com/u/0/d/11N2Dwmc80OnxDCdqnNUs-GV8od9CKMxn" alt="משה" class="w-48 h-48 rounded-full mb-8 object-cover border-4 border-white shadow-xl">
                         <h3 class="text-2xl font-bold mb-2 text-stone-900">משה שאול</h3>
-                        <p class="text-purple-700 mb-4 italic text-base font-semibold">פאוור יוגה</p>
+                        <p class="text-stone-500 mb-4 italic text-base font-semibold">פאוור יוגה</p>
                         <div class="text-stone-800 text-base leading-[1.8] space-y-4 font-medium">
                             <p>
-                                משה מציע חוויית תרגול שלמה המאזנת בין תנועה עוצמתית לדיוק מבני. בשיעוריו הוא שם דגש על סידור נכון של הגוף ועל העמקה משמעותית בנשימה ובמדיטציה בתוך רצף פאוור יוגה דינמי. השיעור מיועד למי שמבקש לחזק את הגוף ולשכלל את היכולות הפיזיות מתוך שקט פנימי ומודעות גבוהה.
+                                משה מציעה חוויית תרגול שלמה המאזנת בין תנועה עוצמתית לדיוק מבני. בשיעוריו הוא שם דגש על סידור נכון של הגוף ועל העמקה משמעותית בנשימה ובמדיטציה בתוך רצף פאוור יוגה דינמי. השיעור מיועד למי שמבקש לחזק את הגוף ולשכלל את היכולות הפיזיות מתוך שקט פנימי ומודעות גבוהה.
                             </p>
                             <p class="text-stone-500 text-sm italic font-normal">
                                 משה למד ועדיין לומד הוראת יוגה אצל דניאל גלבוע, עם התמחות במדיטציה, פראנאיאמה ובשילוב טיפול בשיאצ'ו. במקביל הוא עובר חניכה אישית אצל יובל פינגרמן, שם הוא מתרגל ומעמיק בשיטת אנו יוגה המבוססת על שיטת איינגר.
@@ -380,27 +389,27 @@
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-8 mb-12">
                     <div class="price-card featured">
-                        <div class="absolute -top-4 right-1/2 translate-x-1/2 bg-purple-700 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg">בואו נכיר</div>
+                        <div class="absolute -top-4 right-1/2 translate-x-1/2 bg-stone-600 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg">בואו נכיר</div>
                         <h3 class="text-2xl font-bold mb-6 text-center text-stone-900">צעד ראשון בסטודיו</h3>
                         <div class="space-y-8 mb-10 text-center">
                             <div>
                                 <div class="text-3xl font-bold text-stone-900 mb-1">שיעור ניסיון חינם</div>
                                 <p class="text-sm text-stone-500 italic">שיעור מלא ללא עלות.</p>
                             </div>
-                            <div class="border-t border-purple-100 pt-6">
-                                <div class="text-4xl font-bold text-purple-700 mb-1">₪100</div>
+                            <div class="border-t border-stone-100 pt-6">
+                                <div class="text-4xl font-bold text-orange-900 mb-1">₪100</div>
                                 <div class="font-bold text-stone-900 mb-1">כרטיסיית היכרות - 3 שיעורים</div>
                                 <p class="text-sm text-stone-500 italic">תקף לחודש ימים.</p>
                             </div>
                         </div>
-                        <button onclick="openModal()" class="w-full py-4 rounded-xl bg-purple-700 text-white font-bold hover:bg-purple-800 transition shadow-xl mt-auto">לפרטים והצטרפות</button>
+                        <button onclick="openModal()" class="btn-primary-earth w-full py-4 rounded-xl text-white font-bold transition shadow-xl mt-auto">לפרטים והצטרפות</button>
                     </div>
 
                     <div class="price-card">
                         <span class="text-stone-400 font-bold mb-4 block text-sm">התמדה ואיזון</span>
                         <h3 class="text-2xl font-bold mb-4 text-stone-900">2 תרגולים בשבוע</h3>
                         <div class="mb-6">
-                            <div class="text-2xl font-bold text-purple-700">כ-₪45 <span class="text-sm font-medium text-stone-500">לשיעור</span></div>
+                            <div class="text-2xl font-bold text-orange-900">כ-₪45 <span class="text-sm font-medium text-stone-500">לשיעור</span></div>
                             <div class="text-sm text-stone-400 font-medium">₪370 לחודש</div>
                         </div>
                         <p class="text-stone-800 mb-10 leading-relaxed font-medium">איזון מושלם לשמירה על רצף תרגול קבוע ומעמיק לאורך זמן.</p>
@@ -411,7 +420,7 @@
                         <span class="text-stone-400 font-bold mb-4 block text-sm">הבחירה המשתלמת</span>
                         <h3 class="text-2xl font-bold mb-4 text-stone-900">חופשי חודשי</h3>
                         <div class="mb-6">
-                            <div class="text-2xl font-bold text-purple-700">תרגול ללא הגבלה</div>
+                            <div class="text-2xl font-bold text-orange-900">תרגול ללא הגבלה</div>
                             <div class="text-sm text-stone-400 font-medium">₪470 לחודש</div>
                         </div>
                         <p class="text-stone-800 mb-10 leading-relaxed font-medium">כניסה חופשית לכל המערכת. הדרך הטובה ביותר לבנות תרגול שבועי מעמיק.</p>
@@ -419,30 +428,30 @@
                     </div>
                 </div>
 
-                <div class="max-w-3xl mx-auto bg-purple-100/50 border-2 border-purple-400 p-8 rounded-[2rem] flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right shadow-md mb-8 ring-4 ring-purple-50">
+                <div class="max-w-3xl mx-auto bg-stone-100 border-2 border-stone-200 p-8 rounded-[2rem] flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right shadow-md mb-8 ring-4 ring-stone-50">
                     <div class="flex items-center gap-6">
-                        <div class="bg-purple-700 p-4 rounded-full text-white shadow-lg">
+                        <div class="btn-primary-earth p-4 rounded-full text-white shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="7.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><line x1="17" y1="15" x2="17.01" y2="15"/></svg>
                         </div>
                         <div>
-                            <h4 class="text-2xl font-bold text-purple-900 mb-1">מעדיפים כרטיסייה?</h4>
-                            <p class="text-purple-800 font-medium text-lg">
+                            <h4 class="text-2xl font-bold text-stone-900 mb-1">מעדיפים כרטיסייה?</h4>
+                            <p class="text-stone-800 font-medium text-lg">
                                 דברו איתנו ונבנה לכם <strong>כרטיסייה מותאמת אישית</strong> שתתאים בדיוק לקצב שלכם.
                             </p>
                         </div>
                     </div>
-                    <button onclick="openModal()" class="bg-purple-700 text-white px-8 py-4 rounded-2xl font-bold hover:bg-purple-800 transition-all shadow-lg whitespace-nowrap">צרו איתנו קשר לכרטיסייה</button>
+                    <button onclick="openModal()" class="btn-primary-earth text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg whitespace-nowrap">צרו איתנו קשר לכרטיסייה</button>
                 </div>
 
-                <div class="max-w-3xl mx-auto bg-purple-50/40 border border-purple-100 p-8 rounded-[2rem] text-center shadow-sm">
+                <div class="max-w-3xl mx-auto bg-stone-50/40 border border-stone-100 p-8 rounded-[2rem] text-center shadow-sm">
                     <div class="flex flex-col items-center gap-4">
-                        <div class="text-purple-700">
+                        <div class="text-stone-400">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                         </div>
                         <p class="text-stone-800 font-medium text-lg leading-relaxed">
                             באלאיה אנחנו מאמינים שיוגה שייכת לכולם. אם יש רצון לתרגל אך אין באפשרותך לשלם, נשמח לבדוק יחד אפשרות לתרגול בדָאנַה — לפי היכולת, מתוך נדיבות הדדית ופתיחת הלב.
                         </p>
-                        <button onclick="openModal()" class="text-purple-700 font-bold border-b-2 border-purple-200 hover:border-purple-700 transition-all pb-0.5 mt-2">פנו אלינו בפרטי</button>
+                        <button onclick="openModal()" class="text-stone-600 font-bold border-b-2 border-stone-200 hover:border-stone-400 transition-all pb-0.5 mt-2">פנו אלינו בפרטי</button>
                     </div>
                 </div>
             </div>
@@ -453,7 +462,7 @@
         <div class="max-w-7xl mx-auto text-center">
             <div class="flex flex-col items-center mb-8">
                 <span class="font-serif-logo text-3xl text-white tracking-[0.2em]">ALAYA</span>
-                <span class="preview-text" style="font-family: 'Assistant', sans-serif; font-weight: 300; letter-spacing: 0.3em; font-size: 14px; color: #a855f7; display: block; margin-top: 0.25rem;">סטודיו ליוגה</span>
+                <span class="preview-text" style="font-family: 'Assistant', sans-serif; font-weight: 300; letter-spacing: 0.3em; font-size: 14px; color: #a8a29e; display: block; margin-top: 0.25rem;">סטודיו ליוגה</span>
             </div>
             
             <div class="flex justify-center gap-6 mb-12">
@@ -469,12 +478,12 @@
             </div>
 
             <div class="space-y-2 mb-8">
-                <p class="font-medium text-stone-300">מלכי ישראל 10, רמת אליהו, ראשון לציון <span class="text-purple-400 mx-2 text-sm">|</span> <span class="text-stone-400 italic text-sm">חניה בשפע</span></p>
+                <p class="font-medium text-stone-300">מלכי ישראל 10, רמת אליהו, ראשון לציון <span class="text-stone-500 mx-2 text-sm">|</span> <span class="text-stone-400 italic text-sm">חניה בשפע</span></p>
                 <p class="text-stone-400">054-6604580 | alaya.yoga.il@gmail.com</p>
             </div>
             
             <div class="mb-8">
-                <button onclick="openAccessModal()" class="text-sm text-stone-600 hover:text-purple-400 underline decoration-stone-800 underline-offset-4">הצהרת נגישות</button>
+                <button onclick="openAccessModal()" class="text-sm text-stone-600 hover:text-stone-400 underline decoration-stone-800 underline-offset-4">הצהרת נגישות</button>
             </div>
             
             <p class="text-xs">© 2024 Alaya Yoga Studio. כל הזכויות שמורות.</p>
@@ -485,15 +494,15 @@
     <div id="lead-modal" class="modal-overlay">
         <div class="modal-content">
             <button onclick="closeModal()" class="absolute top-8 left-8 text-stone-400 hover:text-stone-800"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-            <h2 class="text-4xl font-bold text-purple-700 mb-2">צרו קשר</h2>
+            <h2 class="text-4xl font-bold text-stone-700 mb-2">צרו קשר</h2>
             <p class="text-stone-500 mb-10 italic">השאירו פרטים ונחזור אליכם לתיאום שיעור ניסיון.</p>
             <form onsubmit="sendToWhatsapp(event)" class="space-y-6">
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" id="first-name" placeholder="שם פרטי" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none focus:border-purple-500">
-                    <input type="text" id="last-name" placeholder="שם משפחה" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none focus:border-purple-500">
+                    <input type="text" id="first-name" placeholder="שם פרטי" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none focus:border-stone-500">
+                    <input type="text" id="last-name" placeholder="שם משפחה" required class="w-full px-5 py-4 rounded-2xl border border-stone-200 outline-none focus:border-stone-500">
                 </div>
-                <input type="tel" id="phone" required pattern="[0-9]{9,10}" class="w-full px-5 py-4 rounded-2xl border border-stone-200 text-right outline-none focus:border-purple-500" placeholder="טלפון">
-                <button type="submit" class="w-full bg-purple-700 text-white font-bold py-5 rounded-2xl hover:bg-purple-800 transition">שלחו לי פרטים בוואטסאפ</button>
+                <input type="tel" id="phone" required pattern="[0-9]{9,10}" class="w-full px-5 py-4 rounded-2xl border border-stone-200 text-right outline-none focus:border-stone-500" placeholder="טלפון">
+                <button type="submit" class="btn-primary-earth w-full text-white font-bold py-5 rounded-2xl transition">שלחו לי פרטים בוואטסאפ</button>
             </form>
         </div>
     </div>
@@ -502,10 +511,10 @@
     <div id="access-modal" class="modal-overlay">
         <div class="modal-content text-right">
             <button onclick="closeAccessModal()" class="absolute top-8 left-8 text-stone-400 hover:text-stone-800"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-            <h2 class="text-3xl font-bold text-purple-700 mb-6">הצהרת נגישות</h2>
+            <h2 class="text-3xl font-bold text-stone-700 mb-6">הצהרת נגישות</h2>
             <div class="space-y-4 text-stone-800 leading-relaxed overflow-y-auto max-h-[60vh] pr-2">
                 <p>אנו בסטודיו "אלאיה" רואים חשיבות עליונה במתן שירות שוויוני ומכבד לכלל הלקוחות. אתר האינטרנט שלנו הונגש בהתאם להנחיות הנגישות בתקן הישראלי (ת"י 3568) ורמת AA.</p>
-                <h3 class="font-bold text-lg mt-4 border-r-2 border-purple-200 pr-2">התאמות שבוצעו באתר:</h3>
+                <h3 class="font-bold text-lg mt-4 border-r-2 border-stone-200 pr-2">התאמות שבוצעו באתר:</h3>
                 <ul class="list-disc list-inside space-y-1">
                     <li>תמיכה בניווט מקלדת</li>
                     <li>תאימות לקוראי מסך</li>
@@ -513,9 +522,9 @@
                     <li>מבנה אתר היררכי וברור</li>
                     <li>שימוש בטקסט חלופי (Alt) לתמונות</li>
                 </ul>
-                <h3 class="font-bold text-lg mt-4 border-r-2 border-purple-200 pr-2">נגישות בסטודיו (פיזי):</h3>
+                <h3 class="font-bold text-lg mt-4 border-r-2 border-stone-200 pr-2">נגישות בסטודיו (פיזי):</h3>
                 <p>הסטודיו ממוקם ברחוב מלכי ישראל 10, רמת אליהו, ראשון לציון. המקום מונגש לכיסאות גלגלים, כולל חנייה בקרבת מקום ושירותים נגישים.</p>
-                <h3 class="font-bold text-lg mt-4 border-r-2 border-purple-200 pr-2">יצירת קשר בנושא נגישות:</h3>
+                <h3 class="font-bold text-lg mt-4 border-r-2 border-stone-200 pr-2">יצירת קשר בנושא נגישות:</h3>
                 <p>אם נתקלתם בקושי בנגישות באתר או בשירות, נשמח אם תפנו אלינו:</p>
                 <p class="font-bold">טלפון: 054-6604580<br>מייל: alaya.yoga.il@gmail.com</p>
                 <p class="text-xs text-stone-400 italic">עדכון אחרון: אוגוסט 2024</p>
@@ -632,7 +641,7 @@
                 let itemsHtml = '<div class="flex-1 flex items-center justify-center text-stone-300 italic text-sm">אין שיעורים</div>';
                 if (grouped[dn]) {
                     grouped[dn].sort((a, b) => a.ts - b.ts);
-                    itemsHtml = `<div class="space-y-4">${grouped[dn].map(i => `<div class="class-item"><p class="text-[11px] font-bold text-purple-600 mb-1" dir="ltr">${i.time}</p><p class="font-bold text-stone-800 text-sm mb-1">${i.title}</p></div>`).join('')}</div>`;
+                    itemsHtml = `<div class="space-y-4">${grouped[dn].map(i => `<div class="class-item"><p class="text-[11px] font-bold text-stone-600 mb-1" dir="ltr">${i.time}</p><p class="font-bold text-stone-800 text-sm mb-1">${i.title}</p></div>`).join('')}</div>`;
                 }
                 card.innerHTML = `<h3 class="day-title">${dn}</h3>${itemsHtml}`;
                 grid.appendChild(card);
